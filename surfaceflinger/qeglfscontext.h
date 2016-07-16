@@ -44,6 +44,7 @@
 
 #include <QtPlatformSupport/private/qeglconvenience_p.h>
 #include <QtPlatformSupport/private/qeglplatformcontext_p.h>
+#include "qeglfspageflipper.h"
 
 #include "surfaceflinger_context.h"
 
@@ -52,13 +53,19 @@ QT_BEGIN_NAMESPACE
 class QEglFSContext : public QEGLPlatformContext
 {
 public:
-    QEglFSContext(SurfaceFlingerContext *sfc,
-            const QSurfaceFormat &format, QPlatformOpenGLContext *share, EGLDisplay display);
+    QEglFSContext(SurfaceFlingerContext *sfc, QEglFSPageFlipper *pageFlipper,
+            const QSurfaceFormat &format, QPlatformOpenGLContext *share, EGLDisplay display
+#if QT_VERSION < QT_VERSION_CHECK(5, 3, 0)
+            , EGLenum eglApi = EGL_OPENGL_ES_API);
+#else
+            );
+#endif    
     bool makeCurrent(QPlatformSurface *surface);
     EGLSurface eglSurfaceForPlatformSurface(QPlatformSurface *surface);
     void swapBuffers(QPlatformSurface *surface);
 private:
     SurfaceFlingerContext *m_sfc;
+    QEglFSPageFlipper *m_pageFlipper;
     EGLConfig m_config;
     bool m_swapIntervalConfigured;
 };

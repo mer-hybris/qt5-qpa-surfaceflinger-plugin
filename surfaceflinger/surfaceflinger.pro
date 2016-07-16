@@ -38,12 +38,14 @@ SOURCES +=  $$PWD/qeglfsintegration.cpp \
             $$PWD/qeglfswindow.cpp \
             $$PWD/qeglfsbackingstore.cpp \
             $$PWD/qeglfsscreen.cpp \
-            $$PWD/qeglfscontext.cpp
+            $$PWD/qeglfscontext.cpp \
+            $$PWD/qeglfspageflipper.cpp
 
 HEADERS +=  $$PWD/qeglfsintegration.h \
             $$PWD/qeglfswindow.h \
             $$PWD/qeglfsbackingstore.h \
             $$PWD/qeglfsscreen.h \
-            $$PWD/qeglfscontext.h
+            $$PWD/qeglfscontext.h \
+            $$PWD/qeglfspageflipper.h
 
 QMAKE_LFLAGS += $$QMAKE_LFLAGS_NOUNDEF
