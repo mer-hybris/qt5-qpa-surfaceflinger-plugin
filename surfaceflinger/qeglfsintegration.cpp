@@ -63,7 +63,6 @@
 #include <qpa/qplatforminputcontextfactory_p.h>
 
 #include "qeglfscontext.h"
-#include "qeglfspageflipper.h"
 
 #include <EGL/egl.h>
 
@@ -147,7 +146,7 @@ QPlatformBackingStore *QEglFSIntegration::createPlatformBackingStore(QWindow *wi
 
 QPlatformOpenGLContext *QEglFSIntegration::createPlatformOpenGLContext(QOpenGLContext *context) const
 {
-    return new QEglFSContext(mSfc, static_cast<QEglFSPageFlipper *>(mScreen->pageFlipper()), mSfc->surfaceFormatFor(context->format()), context->shareHandle(), mDisplay);
+    return new QEglFSContext(mSfc, mSfc->surfaceFormatFor(context->format()), context->shareHandle(), mDisplay);
 }
 
 QPlatformOffscreenSurface *QEglFSIntegration::createPlatformOffscreenSurface(QOffscreenSurface *surface) const
