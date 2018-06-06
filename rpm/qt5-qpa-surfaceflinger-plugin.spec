@@ -9,7 +9,6 @@ Source0:    %{name}-%{version}.tar.bz2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5PlatformSupport)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(wayland-egl)
@@ -26,7 +25,6 @@ BuildRequires:  wayland-devel
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(mtdev)
-BuildRequires:  libhybris-detritus-devel
 
 %description
 This package contains a Qt 5 QPA plugin using libhybris' Droid

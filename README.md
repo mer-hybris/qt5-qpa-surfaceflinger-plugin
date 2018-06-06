@@ -9,8 +9,4 @@ This permit Qt Applications to render into Android SurfaceFlinger from a GNU/Lin
 
 ##Build
 
- - You need a patched version of libhybris (see libhybris_ext project for now).
-
-##Links
-See [gnulinux_support](https://github.com/mickybart/gnulinux_support) project.
-
+- You will need a patched libsurfaceflinger (permission fix), libsf_compat_layer and a recent libhybris.
