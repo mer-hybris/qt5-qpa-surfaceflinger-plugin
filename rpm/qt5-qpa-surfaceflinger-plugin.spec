@@ -4,7 +4,7 @@ Version:    5.2.0.5
 Release:    1
 Group:      Qt/Qt
 License:    LGPLv2.1 with exception or GPLv3
-URL:        http://github.com/mickybart/qt5-qpa-surfaceflinger-plugin
+URL:        http://github.com/mer-hybris/qt5-qpa-surfaceflinger-plugin
 Source0:    %{name}-%{version}.tar.bz2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -19,7 +19,9 @@ BuildRequires:  pkgconfig(libhardware)
 BuildRequires:  pkgconfig(libsync)
 %endif
 BuildRequires:  pkgconfig(hybris-egl-platform)
+BuildRequires:  pkgconfig(libsf)
 BuildRequires:  pkgconfig(android-headers)
+BuildRequires:  qt5-qtplatformsupport-devel >= 5.6.0
 BuildRequires:  qt5-qtwayland-wayland_egl-devel
 BuildRequires:  wayland-devel
 BuildRequires:  pkgconfig(udev)
