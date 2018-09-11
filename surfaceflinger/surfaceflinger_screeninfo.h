@@ -50,11 +50,13 @@
 #include <QSizeF>
 #include <QSize>
 
-QT_BEGIN_NAMESPACE
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(QPA_LOG_SF)
 
 class SurfaceFlingerScreenInfo {
 public:
-    SurfaceFlingerScreenInfo(size_t display_id);
+    SurfaceFlingerScreenInfo(size_t display_id = 0);
 
     QSizeF physicalScreenSize() const { return m_physicalScreenSize; }
     QSize screenSize() const { return m_screenSize; }
@@ -67,7 +69,5 @@ private:
     int m_screenDepth;
     float m_refreshRate;
 };
-
-QT_END_NAMESPACE
 
 #endif /* SURFACEFLINGER_SCREENINFO_H */

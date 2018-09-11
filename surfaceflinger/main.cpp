@@ -39,28 +39,15 @@
 **
 ****************************************************************************/
 
-#include <qpa/qplatformintegrationplugin.h>
-#include "qeglfsintegration.h"
+#include <private/qeglfsdeviceintegration_p.h>
+#include "eglfssurfaceflingerintegration.h"
 
-QT_BEGIN_NAMESPACE
-
-class QEglFSsfIntegrationPlugin : public QPlatformIntegrationPlugin
+class EglFsSurfaceFlingerIntegrationPlugin : public QEglFSDeviceIntegrationPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID QPlatformIntegrationFactoryInterface_iid FILE "surfaceflinger.json")
+    Q_PLUGIN_METADATA(IID QEglFSDeviceIntegrationFactoryInterface_iid FILE "surfaceflinger.json")
 public:
-    QPlatformIntegration *create(const QString&, const QStringList&) Q_DECL_OVERRIDE;
+    QEglFSDeviceIntegration *create() override { return new EglFsSurfaceFlingerIntegration; }
 };
-
-QPlatformIntegration* QEglFSsfIntegrationPlugin::create(const QString& system, const QStringList& paramList)
-{
-    Q_UNUSED(paramList);
-    if (!system.compare(QLatin1String("surfaceflinger"), Qt::CaseInsensitive))
-        return new QEglFSIntegration();
-
-    return 0;
-}
-
-QT_END_NAMESPACE
 
 #include "main.moc"
