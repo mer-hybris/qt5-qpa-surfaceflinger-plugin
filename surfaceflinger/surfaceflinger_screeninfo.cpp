@@ -55,6 +55,8 @@
 
 #include <hybris/surface_flinger/surface_flinger_compatibility_layer.h>
 
+Q_LOGGING_CATEGORY(QPA_LOG_SF, "qt.qpa.surfaceflinger")
+
 /* Empty namespace */
 namespace {
 
@@ -126,12 +128,6 @@ class SurfaceFlingerScreenInfoAndroidSource {
 public:
     SurfaceFlingerScreenInfoAndroidSource(size_t display_id)
     {
-        m_width = 0;
-        m_height = 0;
-        m_physicalWidth = 0;
-        m_physicalHeight = 0;
-        m_refresh_rate = 0.0f;
-        
         struct SfDisplayInfo display_info;
         if (sf_get_display_info(display_id, &display_info) == 0) {
             m_width = display_info.w;
@@ -183,12 +179,12 @@ public:
     }
 
 private:
-    int m_physicalWidth;
-    int m_physicalHeight;
-    int m_width;
-    int m_height;
-    float m_refresh_rate;
-    int m_depth;
+    int m_physicalWidth = 0;
+    int m_physicalHeight = 0;
+    int m_width = 0;
+    int m_height = 0;
+    float m_refresh_rate = 0.0f;
+    int m_depth = 0;
 };
 
 
@@ -247,12 +243,12 @@ public:
     }
 
 private:
-    int m_physicalWidth;
-    int m_physicalHeight;
-    int m_width;
-    int m_height;
-    int m_depth;
-    float m_refresh_rate;
+    const int m_physicalWidth;
+    const int m_physicalHeight;
+    const int m_width;
+    const int m_height;
+    const int m_depth;
+    const float m_refresh_rate;
 };
 
 
@@ -306,11 +302,11 @@ SurfaceFlingerScreenInfo::SurfaceFlingerScreenInfo(size_t display_id)
         m_refreshRate = fallbackSource.refreshRate();
     }
 
-    qDebug() << "EGLFS: Screen Info";
-    qDebug() << " - Physical size:" << m_physicalScreenSize;
-    qDebug() << " - Screen size:" << m_screenSize;
-    qDebug() << " - Screen depth:" << m_screenDepth;
-    qDebug() << " - Refresh rate:" << m_refreshRate;
+    qCDebug(QPA_LOG_SF) << "EGLFS: Screen Info";
+    qCDebug(QPA_LOG_SF) << " - Physical size:" << m_physicalScreenSize;
+    qCDebug(QPA_LOG_SF) << " - Screen size:" << m_screenSize;
+    qCDebug(QPA_LOG_SF) << " - Screen depth:" << m_screenDepth;
+    qCDebug(QPA_LOG_SF) << " - Refresh rate:" << m_refreshRate;
 }
 
 QT_END_NAMESPACE
